@@ -7,6 +7,23 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePi
     var sessionOutput = AVCapturePhotoOutput();
     var previewLayer = AVCaptureVideoPreviewLayer();
     
+    
+    @IBAction func toggleLight(_ sender: UIButton) {
+        if let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo), device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+                let torchOn = !device.isTorchActive
+                try device.setTorchModeOnWithLevel(1.0)
+                device.torchMode = torchOn ? .on : .off
+                device.unlockForConfiguration()
+            } catch {
+                print("error")
+            }
+        }
+    }
+    override func viewDidLoad() {
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         let deviceDiscoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [
             AVCaptureDeviceType.builtInDualCamera,
@@ -45,4 +62,5 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePi
         super.viewDidLayoutSubviews()
         previewLayer.frame = cameraView.bounds
     }
+    
 }
