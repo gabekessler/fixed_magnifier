@@ -6,6 +6,8 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePi
     var captureSession = AVCaptureSession();
     var sessionOutput = AVCapturePhotoOutput();
     var previewLayer = AVCaptureVideoPreviewLayer();
+    let focusArray: [Float] = [0.0, 0.5, 1.0];
+    var focusArrayIndex = 0;
     
     
     @IBAction func toggleLight(_ sender: UIButton) {
@@ -19,6 +21,23 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePi
             } catch {
                 print("error")
             }
+        }
+    }
+    
+    @IBAction func toggleFocus(_ sender: UIButton) {
+        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)!
+        do {
+            if(focusArrayIndex == focusArray.count){
+                focusArrayIndex = 0;
+            }
+            try device.lockForConfiguration();
+            device.focusMode = .locked
+            device.setFocusModeLockedWithLensPosition(focusArray[focusArrayIndex], completionHandler: nil)
+            device.unlockForConfiguration();
+            focusArrayIndex += 1
+        }
+        catch{
+            print("exception!");
         }
     }
     override func viewDidLoad() {
