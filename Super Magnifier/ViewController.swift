@@ -27,6 +27,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePi
     @IBAction func toggleFocus(_ sender: UIButton) {
         let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)!
         do {
+            focusArrayIndex += 1
             if(focusArrayIndex == focusArray.count){
                 focusArrayIndex = 0;
             }
@@ -34,7 +35,6 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePi
             device.focusMode = .locked
             device.setFocusModeLockedWithLensPosition(focusArray[focusArrayIndex], completionHandler: nil)
             device.unlockForConfiguration();
-            focusArrayIndex += 1
         }
         catch{
             print("exception!");
@@ -65,6 +65,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePi
                             captureSession.addOutput(sessionOutput);
                             previewLayer = AVCaptureVideoPreviewLayer(session: captureSession);
                             previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+                            previewLayer.frame = cameraView.bounds;
                             cameraView.layer.addSublayer(previewLayer);
                         }
                     }
