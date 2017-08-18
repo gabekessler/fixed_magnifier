@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,29 +27,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ug-lF-vvG">
-                                <rect key="frame" x="16" y="40" width="30" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="JiL-hO-zcx"/>
-                                    <constraint firstAttribute="width" constant="30" id="rZx-di-XWy"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="1">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" metaFont="system" size="26"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <color key="highlightedColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="shadowOffset" width="1" height="-1"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Ct-JB-Wyy">
                                 <rect key="frame" x="16" y="602.5" width="343" height="44.5"/>
                                 <subviews>
@@ -101,15 +78,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="4Ct-JB-Wyy" secondAttribute="trailing" id="K9c-ea-xBV"/>
                             <constraint firstItem="Rjz-cL-izY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="PZ1-Uo-Zef"/>
                             <constraint firstItem="4Ct-JB-Wyy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Vlq-7p-V5h"/>
-                            <constraint firstItem="9Ug-lF-vvG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Wuw-J0-m8e"/>
                             <constraint firstItem="Rjz-cL-izY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cwh-aZ-Lq2"/>
-                            <constraint firstItem="9Ug-lF-vvG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="iq5-J8-Oos"/>
                             <constraint firstAttribute="trailing" secondItem="Rjz-cL-izY" secondAttribute="trailing" id="uw9-wa-yeY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="Rjz-cL-izY" id="XlT-Mq-kg2"/>
-                        <outlet property="focusDisplay" destination="9Ug-lF-vvG" id="2Xh-o3-blP"/>
+                        <outlet property="focusDisplayButtonText" destination="fun-9O-wEa" id="MmZ-kY-OMg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

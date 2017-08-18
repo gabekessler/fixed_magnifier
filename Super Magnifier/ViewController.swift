@@ -3,13 +3,13 @@ import AVFoundation
 
 class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var cameraView: UIView!
-    @IBOutlet weak var focusDisplay: UILabel!
+    @IBOutlet weak var focusDisplayButtonText: UIButton!
     var captureSession = AVCaptureSession();
     var sessionOutput = AVCapturePhotoOutput();
     var previewLayer = AVCaptureVideoPreviewLayer();
     let focusArray: [Float] = [0.0, 0.5, 1.0];
     var focusArrayIndex = 0;
-    var focusDisplayText : Int = 1;
+    var focusDisplayText : String = "Focus 1";
     
     
     @IBAction func toggleLight(_ sender: UIButton) {
@@ -30,23 +30,23 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePi
         let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)!
         do {
             focusArrayIndex += 1
-            focusDisplayText += 1
+            focusDisplayText = "Focus \(focusArrayIndex + 1)"
             if(focusArrayIndex == focusArray.count){
                 focusArrayIndex = 0;
-                focusDisplayText = 1;
+                focusDisplayText = "Focus \(focusArrayIndex + 1)"
             }
             try device.lockForConfiguration();
             device.focusMode = .locked
             device.setFocusModeLockedWithLensPosition(focusArray[focusArrayIndex], completionHandler: nil)
             device.unlockForConfiguration();
-            focusDisplay.text = String(focusDisplayText);
+            focusDisplayButtonText.setTitle(focusDisplayText, for: .normal)
         }
         catch{
             print("exception!");
         }
     }
     override func viewDidLoad() {
-        
+        focusDisplayButtonText.setTitle(focusDisplayText, for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
         let deviceDiscoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [
